@@ -1,4 +1,11 @@
 {
-    "users":[],
-    "tasks":[]
+  "users": [
+    {
+      "name": "Vipin Kumar",
+      "email": "vipin@gmail.com",
+      "password": "admin",
+      "id": 1
+    }
+  ],
+  "tasks": []
 }
