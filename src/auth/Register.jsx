@@ -20,12 +20,22 @@ function Register(props) {
             },
             body: JSON.stringify(formData)
         }
-        const response = await fetch(`http://localhost:5000/users`, config);
-        if (response.status === 201) {
-            alert("user Registered");
+
+        const checkUser = await fetch(`http://localhost:5000/users?email=${formData.email}`, { method: 'GET' });
+
+        const users = await checkUser.json();
+
+        if (users.length > 0) {
+            alert("user already exist");
         } else {
-            alert("something went wrong");
+            const response = await fetch(`http://localhost:5000/users`, config);
+            if (response.status === 201) {
+                alert("user Registered");
+            } else {
+                alert("something went wrong");
+            }
         }
+
     }
 
     return (

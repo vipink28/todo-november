@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 function Navbar(props) {
+    const { userDetails } = props;
+
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -32,7 +35,7 @@ function Navbar(props) {
 
                         <li className="nav-item dropdown">
                             <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                                {userDetails?.name}
                             </Link>
                             <ul className="dropdown-menu">
                                 <li><Link className="dropdown-item" to="#">Action</Link></li>

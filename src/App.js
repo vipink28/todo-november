@@ -10,15 +10,25 @@ import PageNotFound from './pages/PageNotFound';
 import Navbar from './components/Navbar';
 import Login from './auth/Login';
 import Register from './auth/Register';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  //useEffect()-
+  useEffect(() => {
+    const localUser = localStorage.getItem("todouser");
+    const userObj = JSON.parse(localUser);
+    setUser(userObj);
+  }, [])
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar userDetails={user} />
       <Routes>
         <Route path='/' element={<Navigate to="/login" />}></Route>
         <Route path='/' element={<Home />}>
-          <Route path='/login' element={<Login />}></Route>
+          <Route path='/login' element={<Login set={setUser} />}></Route>
           <Route path='/register' element={<Register />}></Route>
         </Route>
         <Route path='/about' element={<About />}></Route>

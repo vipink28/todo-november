@@ -11,6 +11,12 @@
       "email": "aman@gmail.com",
       "password": "admin",
       "id": 2
+    },
+    {
+      "name": "Vipin",
+      "email": "vipinkumar@gmail.com",
+      "password": "agegage",
+      "id": 3
     }
   ],
   "tasks": []

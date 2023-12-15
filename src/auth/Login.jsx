@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function Login(props) {
     const [formData, setFormData] = useState();
     const [message, setMessage] = useState("");
+    const { set } = props;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,6 +20,7 @@ function Login(props) {
         if (users.length > 0) {
             setMessage("logged in successfully");
             localStorage.setItem("todouser", JSON.stringify(users[0]));
+            set(users[0]);
         } else {
             setMessage("something went wrong");
         }
