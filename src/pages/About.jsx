@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../auth/authContext';
 
 function About(props) {
+    const text = useContext(AuthContext);
     return (
         <div>
-            About
+            About {text}
         </div>
     );
 }

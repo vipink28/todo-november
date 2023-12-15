@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import { useEffect, useState } from 'react';
+import { AuthProvider } from './auth/authContext';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -24,19 +25,21 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar userDetails={user} />
-      <Routes>
-        <Route path='/' element={<Navigate to="/login" />}></Route>
-        <Route path='/' element={<Home />}>
-          <Route path='/login' element={<Login set={setUser} />}></Route>
-          <Route path='/register' element={<Register />}></Route>
-        </Route>
-        <Route path='/about' element={<About />}></Route>
-        <Route path='/create-task' element={<CreateTask />}></Route>
-        <Route path='/task-list' element={<TaskList />}></Route>
-        <Route path='/profile' element={<Profile />}></Route>
-        <Route path='*' element={<PageNotFound />}></Route>
-      </Routes>
+      <AuthProvider>
+        <Navbar userDetails={user} />
+        <Routes>
+          <Route path='/' element={<Navigate to="/login" />}></Route>
+          <Route path='/' element={<Home />}>
+            <Route path='/login' element={<Login set={setUser} />}></Route>
+            <Route path='/register' element={<Register />}></Route>
+          </Route>
+          <Route path='/about' element={<About />}></Route>
+          <Route path='/create-task' element={<CreateTask />}></Route>
+          <Route path='/task-list' element={<TaskList />}></Route>
+          <Route path='/profile' element={<Profile />}></Route>
+          <Route path='*' element={<PageNotFound />}></Route>
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
