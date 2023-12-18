@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import AuthContext from './authContext';
 
 function Register(props) {
     const [formData, setFormData] = useState(null);
+    const { registerUser, message } = useContext(AuthContext);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -13,29 +15,7 @@ function Register(props) {
 
     const submitForm = async (e) => {
         e.preventDefault();
-        const config = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        }
-
-        const checkUser = await fetch(`http://localhost:5000/users?email=${formData.email}`, { method: 'GET' });
-
-        const users = await checkUser.json();
-
-        if (users.length > 0) {
-            alert("user already exist");
-        } else {
-            const response = await fetch(`http://localhost:5000/users`, config);
-            if (response.status === 201) {
-                alert("user Registered");
-            } else {
-                alert("something went wrong");
-            }
-        }
-
+        registerUser(formData);
     }
 
     return (
@@ -52,6 +32,8 @@ function Register(props) {
                 <label className='form-label'>Password</label>
                 <input type="password" className='form-control' name='password' onChange={handleChange} />
             </div>
+
+            <p>{message}</p>
             <button className='btn btn-primary' onClick={submitForm}>Register</button>
         </form>
     );

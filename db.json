@@ -17,6 +17,18 @@
       "email": "vipinkumar@gmail.com",
       "password": "agegage",
       "id": 3
+    },
+    {
+      "name": "Kunal",
+      "email": "kunal@gmail.com",
+      "password": "admin",
+      "id": 4
+    },
+    {
+      "name": "Rishita",
+      "email": "rishita@gmail.com",
+      "password": "amdin",
+      "id": 5
     }
   ],
   "tasks": []
