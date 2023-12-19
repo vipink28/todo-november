@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from './authContext';
 
 function Register(props) {
     const [formData, setFormData] = useState(null);
-    const { registerUser, message } = useContext(AuthContext);
+    const { registerUser, message, setMessage } = useContext(AuthContext);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,6 +17,10 @@ function Register(props) {
         e.preventDefault();
         registerUser(formData);
     }
+
+    useEffect(() => {
+        setMessage("");
+    }, [])
 
     return (
         <form>

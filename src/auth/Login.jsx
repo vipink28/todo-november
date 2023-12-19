@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from './authContext';
 
 function Login(props) {
     const [formData, setFormData] = useState();
-    const { login, message } = useContext(AuthContext);
+    const { login, message, setMessage } = useContext(AuthContext);
+
 
 
 
@@ -19,6 +20,11 @@ function Login(props) {
         e.preventDefault();
         login(formData);
     }
+
+
+    useEffect(() => {
+        setMessage("");
+    }, [])
 
     return (
         <form>

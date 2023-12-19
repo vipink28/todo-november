@@ -63,11 +63,24 @@ export const AuthProvider = ({ children }) => {
         navigate('/');
     }
 
+    const fetchUserDetails = async (id) => {
+        const response = await fetch(`http://localhost:5000/users?email=${id}`, { method: "GET" });
+        if (response.ok) {
+            const userArr = await response.json();
+            if (userArr.length > 0) {
+                setUser(userArr[0]);
+            } else {
+                setUser(null);
+                localStorage.removeItem("todouser");
+            }
+        }
+    }
+
     useEffect(() => {
         const localUser = localStorage.getItem("todouser");
         if (localUser) {
             const user = JSON.parse(localUser);
-            setUser(user);
+            fetchUserDetails(user.email);
         }
     }, [])
 

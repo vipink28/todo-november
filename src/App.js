@@ -12,6 +12,7 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import { useEffect, useState } from 'react';
 import { AuthProvider } from './auth/authContext';
+import Protected from './auth/Protected';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,7 +36,7 @@ function App() {
           </Route>
           <Route path='/about' element={<About />}></Route>
           <Route path='/create-task' element={<CreateTask />}></Route>
-          <Route path='/task-list' element={<TaskList />}></Route>
+          <Route path='/task-list' element={<Protected> <TaskList /> </Protected>}></Route>
           <Route path='/profile' element={<Profile />}></Route>
           <Route path='*' element={<PageNotFound />}></Route>
         </Routes>
