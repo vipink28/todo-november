@@ -3,7 +3,7 @@ import AuthContext from '../auth/authContext';
 import TaskContext from '../context/TaskContext';
 
 function TaskForm(props) {
-    const { message } = useContext(AuthContext);
+    const { message, user } = useContext(AuthContext);
     const { createTask } = useContext(TaskContext);
 
     const [formData, setFormData] = useState(null);
@@ -11,7 +11,9 @@ function TaskForm(props) {
         const { name, value } = e.target;
         setFormData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value,
+            userid: user.id,
+            modifiedon: Date()
         }))
     }
 
