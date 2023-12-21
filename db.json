@@ -31,5 +31,12 @@
       "id": 5
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "title": "Meeting",
+      "description": "meeting with client",
+      "duedate": "2023-12-22T15:55",
+      "id": 1
+    }
+  ]
 }
