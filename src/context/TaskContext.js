@@ -48,7 +48,10 @@ export const TaskProvider = ({ children }) => {
 
     return (
         <TaskContext.Provider value={{
-            createTask
+            createTask,
+            allTasks,
+            latestTask,
+            recentTasks
         }}>
             {children}
         </TaskContext.Provider>
