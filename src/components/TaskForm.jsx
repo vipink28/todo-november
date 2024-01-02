@@ -3,9 +3,14 @@ import AuthContext from '../auth/authContext';
 import TaskContext from '../context/TaskContext';
 
 function TaskForm(props) {
-    const { isUpdate, data } = props;
-    const { message, user } = useContext(AuthContext);
-    const { createTask } = useContext(TaskContext);
+    const init = {
+        title: "",
+        description: "",
+        duedate: ""
+    }
+    const { isUpdate, data, setIsUpdate } = props;
+    const { message, user, setMessage } = useContext(AuthContext);
+    const { createTask, updateTask } = useContext(TaskContext);
 
 
     const [formData, setFormData] = useState(null);
@@ -31,6 +36,22 @@ function TaskForm(props) {
         createTask(formData);
     }
 
+    const onUpdate = (e) => {
+        e.preventDefault();
+        updateTask(formData);
+    }
+
+    const onCancel = (e) => {
+        e.preventDefault();
+        setIsUpdate(false);
+        setFormData(init);
+        setMessage("");
+    }
+
+    useEffect(() => {
+        setMessage("");
+    }, [])
+
     return (
         <div className='p-2 w-50'>
             <h3 className='text-white'>{isUpdate ? "Update Task" : "Create Task"}</h3>
@@ -54,8 +75,8 @@ function TaskForm(props) {
                         <p>{message}</p>
                         {isUpdate ?
                             <>
-                                <button className='btn btn-primary me-2'>Update Task</button>
-                                <button className='btn btn-warning'>Cancel</button>
+                                <button className='btn btn-primary me-2' onClick={onUpdate}>Update Task</button>
+                                <button className='btn btn-warning' onClick={onCancel}>Cancel</button>
                             </> :
                             <button className='btn btn-primary' onClick={onCreate}>Create Task</button>
                         }

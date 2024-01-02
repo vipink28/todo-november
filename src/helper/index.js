@@ -6,3 +6,13 @@ export const formatDate = (dateString) => {
     ${date.getFullYear()} 
     ${date.toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true })}`
 }
+
+export const secondFunction = () => {
+
+}
+
+const thirdFunction = () => {
+
+}
+
+export default thirdFunction

@@ -67,10 +67,26 @@
     {
       "title": "Gym",
       "userid": 1,
-      "modifiedon": "Thu Dec 21 2023 11:24:03 GMT+0530 (India Standard Time)",
-      "description": "Join gym from 1 January",
-      "duedate": "2023-12-31T15:33",
+      "modifiedon": "Thu Dec 28 2023 11:10:05 GMT+0530 (India Standard Time)",
+      "description": "Join gym from 1 February",
+      "duedate": "2024-01-31T15:33",
       "id": 5
+    },
+    {
+      "title": "Meeting",
+      "userid": 1,
+      "modifiedon": "Thu Dec 28 2023 11:26:01 GMT+0530 (India Standard Time)",
+      "description": "Meeting with another client",
+      "duedate": "2023-12-30T16:30",
+      "id": 6
+    },
+    {
+      "title": "Seminar",
+      "userid": 1,
+      "modifiedon": "Thu Dec 28 2023 11:44:50 GMT+0530 (India Standard Time)",
+      "description": "Attend seminar on global warming issue",
+      "duedate": "2023-12-29T17:37",
+      "id": 7
     }
   ]
 }
